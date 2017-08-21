@@ -63,6 +63,15 @@ class ViewController: UIViewController {
         CurrentNumber = ""
         CurrentOperation = op.Sub
         }
+        
+        if CurrentOperation != op.Sub
+        {
+            CurrentOperation = op.Sub
+            CurrentNumber = String(CurrentNumber.characters.dropLast())
+            CurrentNumber += LeftOperand + "-"
+            Display(Str : CurrentNumber)
+            CurrentNumber = ""
+        }
     }
 
     @IBAction func OnMulBtnClick(_ sender: Any) {
@@ -74,6 +83,16 @@ class ViewController: UIViewController {
             CurrentNumber = ""
             CurrentOperation = op.Mul
         }
+       
+        if CurrentOperation != op.Mul
+        {
+            CurrentOperation = op.Mul
+            CurrentNumber = String(CurrentNumber.characters.dropLast())
+            CurrentNumber += LeftOperand + "*"
+            Display(Str : CurrentNumber)
+            CurrentNumber = ""
+        }
+
 
     }
     
@@ -86,6 +105,16 @@ class ViewController: UIViewController {
             CurrentNumber = ""
             CurrentOperation = op.Div
         }
+        
+        if CurrentOperation != op.Div
+        {
+            CurrentOperation = op.Div
+            CurrentNumber = String(CurrentNumber.characters.dropLast())
+            CurrentNumber += LeftOperand + "/"
+            Display(Str : CurrentNumber)
+            CurrentNumber = ""
+        }
+
 
 
     }
@@ -100,6 +129,16 @@ class ViewController: UIViewController {
             CurrentNumber = ""
             CurrentOperation = op.Add
         }
+        
+        if CurrentOperation != op.Add
+        {
+            CurrentOperation = op.Add
+            CurrentNumber = String(CurrentNumber.characters.dropLast())
+            CurrentNumber += LeftOperand + "+"
+            Display(Str : CurrentNumber)
+            CurrentNumber = ""
+        }
+
 
     }
     
@@ -119,6 +158,8 @@ class ViewController: UIViewController {
     
     func calculate()
     {
+        if LeftOperand != ""
+        {
         switch CurrentOperation {
         case op.Sub:
             Result = "\(Double(LeftOperand)! - Double(CurrentNumber)!)"
@@ -133,7 +174,12 @@ class ViewController: UIViewController {
         }
         Display(Str: Result)
         clear()
-    
+        }
+        else
+        {
+            Display(Str: "0")
+            clear()
+        }
     }
     
     func clear()
